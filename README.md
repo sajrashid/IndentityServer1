@@ -18,3 +18,7 @@ NB: Notice the statup config in API notice options.Authority = "http://localhost
 
 This means that the API is TRUSTING token requests from the identity server running on port 5000 
 
+
+
+Setup documented here http://docs.identityserver.io/en/release/quickstarts/0_overview.html
+Then here for the tutorial used to create this demo http://docs.identityserver.io/en/release/quickstarts/1_client_credentials.html
