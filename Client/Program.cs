@@ -1,6 +1,7 @@
 ﻿using IdentityModel.Client;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -12,8 +13,13 @@ namespace Client
 
         private static async Task MainAsync()
         {
+
             // discover endpoints from metadata
             var disco = await DiscoveryClient.GetAsync("http://localhost:5000");
+
+         //   disco.Policy.LoopbackAddresses.Add("localhost.fiddler");
+          //  disco.Policy.Authority = "http://localhost:5000";
+
             if (disco.IsError)
             {
                 Console.WriteLine(disco.Error);
@@ -40,8 +46,7 @@ namespace Client
             var client = new HttpClient();
             client.SetBearerToken(tokenResponse.AccessToken);
 
-            var response = await client.GetAsync("http://localhost:5001/identity");
-
+            var response = await client.GetAsync("http://localhost.fiddler:5001/identity");
             if (!response.IsSuccessStatusCode)
             {
                 Console.WriteLine(response.StatusCode);
